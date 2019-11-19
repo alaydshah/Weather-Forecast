@@ -63,7 +63,4 @@ export class WeatherdataService {
     this.weatherDataUpdated.next();
   }
 
-
-
-
 }
