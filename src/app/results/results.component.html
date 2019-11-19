@@ -1,0 +1,14 @@
+<div class="container" *ngIf="weatherData">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="'current'" routerLinkActive="active" >Current</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="'hourly'" routerLinkActive="active">Hourly</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="'weekly'" routerLinkActive="active">Weekly</a>
+        </li>
+    </ul>
+    <router-outlet></router-outlet>
+</div>

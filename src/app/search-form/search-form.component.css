@@ -1,0 +1,24 @@
+.mandatory {
+    color: red;
+    margin-left: 2px;
+}
+
+
+.error-msg {
+    color: red;
+    margin-top: 3px;
+}
+
+.btn {
+    margin-left: 15px;
+}
+
+.fa-search {
+    margin-right: 5px;
+}
+
+.clear {
+    height: 20px;
+    margin-bottom: 3px;
+    margin-right: 2px;
+}
