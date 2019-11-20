@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WeatherdataService } from '../weather-data/weatherdata.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, Subject } from 'rxjs';
 import { WeatherData } from '../weather-data/weather-data';
 
 @Component({
@@ -11,12 +11,14 @@ import { WeatherData } from '../weather-data/weather-data';
 export class ResultsComponent implements OnInit {
 
   // @Input() weatherData;
-  private weatherData;
-  private weatherdataSub: Subscription;
+
 
   constructor(private weatherdataService: WeatherdataService) {
 
    }
+
+   private weatherData;
+   private weatherdataSub: Subscription;
 
   ngOnInit() {
     this.weatherdataSub = this.weatherdataService.getWeatherdataListener().subscribe((data) => {
@@ -34,8 +36,10 @@ export class ResultsComponent implements OnInit {
     //   this.weatherData = data;
     // });
     this.weatherdataService.getWeatherData();
-    console.log(this.weatherData);
+    console.log(this.weatherdataService.getWeatherData());
   }
+
+
 
 
 

@@ -15,6 +15,7 @@ export class WeatherdataService {
   constructor(private http: HttpClient) { }
 
   serverUrl = 'http://localhost:5000/';
+  private paramData = [];
   private weatherData;
   private weatherDataUpdated = new Subject<any>();
 
@@ -61,6 +62,18 @@ export class WeatherdataService {
     console.log('WeatherData Clear fired');
     this.weatherData = null;
     this.weatherDataUpdated.next();
+  }
+
+  getParameterData(parameter) {
+    if (this.weatherData) {
+      this.paramData = [];
+      let i = 0;
+      for (i = 0; i < 24; i++) {
+        this.paramData.push(this.weatherData.hourly.data[i][parameter]);
+      }
+
+    }
+    return this.paramData;
   }
 
 }

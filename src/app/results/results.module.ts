@@ -7,6 +7,8 @@ import { CurrentComponent } from './current/current.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { WeeklyComponent } from './weekly/weekly.component';
 import { ChartsModule } from 'ng2-charts';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { ChartsModule } from 'ng2-charts';
   imports: [
     CommonModule,
     ResultsRoutingModule,
-    ChartsModule
+    ChartsModule,
+    FormsModule
   ]
 })
 export class ResultsModule { }
