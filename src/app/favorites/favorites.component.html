@@ -12,7 +12,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+        <tr *ngFor="let fav of favorites; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>Image</td>
+            <td>
+                <button class="cityButton" routerLink="/results/current" (click)="fetchWeather(fav)" routerLinkActive="active">{{fav.city}}</button>
+            </td>
+            <td>{{fav.state}}</td>
+            <td>
+                <button type="button" class="btn btn-outline" (click)="removeFavorite(fav.key)">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </td>
+        </tr>
+        <!-- <tr>
         <th scope="row">1</th>
         <td>Image</td>
         <td>Seattle</td>
@@ -25,7 +38,7 @@
         <td>Los Angeles</td>
         <td>CA</td>
         <td>delete</td>
-        </tr>
+        </tr> -->
     </tbody>
 </table>
 

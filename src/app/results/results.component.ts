@@ -12,7 +12,6 @@ export class ResultsComponent implements OnInit {
 
   // @Input() weatherData;
 
-
   constructor(private weatherdataService: WeatherdataService,
               private favoritesService: FavoriteService) {
 
@@ -47,7 +46,7 @@ export class ResultsComponent implements OnInit {
 
   onFavClick() {
     if (this.isFavourite) {
-      this.favoritesService.removeFavorite(this.favoritesService.curKey);
+      this.favoritesService.removeFavorite(this.favoritesService.curFav.key);
     } else {
       this.isFavourite = true;
       this.favoritesService.setFavorite();

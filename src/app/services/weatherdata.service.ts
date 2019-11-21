@@ -82,7 +82,7 @@ export class WeatherdataService {
       city: inCity,
       state: inState,
       lat: this.weatherData.latitude,
-      lon: this.weatherData.latitude
+      lon: this.weatherData.longitude
     };
   }
 
