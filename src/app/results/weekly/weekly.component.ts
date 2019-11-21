@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherdataService } from 'src/app/weather-data/weatherdata.service';
 import * as CanvasJS from '../canvasjs.min.js';
+import { WeatherdataService } from 'src/app/services/weatherdata.service.js';
 @Component({
   selector: 'app-weekly',
   templateUrl: './weekly.component.html',

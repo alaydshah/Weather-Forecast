@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherdataService } from '../weather-data/weatherdata.service';
 
 @Component({
   selector: 'app-favorites',

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { WeatherdataService } from '../weather-data/weatherdata.service';
+import { WeatherdataService } from './weatherdata.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { SearchForm } from './search-form';
+// import { Observable } from 'rxjs';
+// import { map } from 'rxjs/operators';
+// import { SearchForm } from './search-form';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

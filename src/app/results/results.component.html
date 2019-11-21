@@ -13,9 +13,12 @@
                 <button class="nav-item btn tweet" (click)="tweet()">
                         <img class="twittericon" src="../../assets/img/twitter.png" alt="Twitter">
                 </button> 
-                <button class="nav-item btn fav-btn" (click)="tweet()">
+                <button class="nav-item btn fav-btn" (click)="onFavClick()">
                         <!-- <img id="tweet" class="favorites" src="../../assets/img/star.png" alt="Favorites"> -->
-                        <i class="large material-icons star">star</i>
+                        <i *ngIf="isFavourite; else starBorder" class="large material-icons star">star</i>
+                        <ng-template #starBorder>
+                            <i class="large material-icons">star_border</i>
+                        </ng-template>
                 </button>      
     </ul>
 

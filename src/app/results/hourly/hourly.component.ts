@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { WeatherdataService } from 'src/app/weather-data/weatherdata.service';
+import { WeatherdataService } from 'src/app/services/weatherdata.service';
+// import { WeatherdataService } from 'src/app/weather-data/weatherdata.service';
 
 @Component({
   selector: 'app-hourly',

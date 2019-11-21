@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SearchForm } from './search-form';
-import { SearchService } from './search.service';
+// import { SearchService } from './search.service';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { WeatherdataService } from '../weather-data/weatherdata.service';
+// import { WeatherdataService } from '../weather-data/weatherdata.service';
+import { SearchService } from '../services/search.service';
+import { WeatherdataService } from '../services/weatherdata.service';
 // import { HeroService } from '../hero.service';
 
 const httpOptions = {
