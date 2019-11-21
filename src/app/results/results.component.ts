@@ -39,6 +39,16 @@ export class ResultsComponent implements OnInit {
     console.log(this.weatherdataService.getWeatherData());
   }
 
+  tweet() {
+    let url = "https://twitter.com/intent/tweet?text=";
+    url += `Check out ${this.details.name} at ${
+      this.details.formatted_address
+    }. Website: `;
+    url += "&hashtags=TravelAndEntertainmentSearch";
+    url += "&url=" + this.details.website;
+    var newWin = window.open(url, "tweet", "height=600, width=600");
+  }
+
 
 
 

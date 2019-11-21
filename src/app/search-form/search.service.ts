@@ -25,8 +25,8 @@ export class SearchService {
   searchQuery(form) {
 
     const street = form.street;
-    const city = form.city;
-    const state = form.state;
+    let city = form.city;
+    let state = form.state;
     const currLoc = form.currLoc;
     let lat = 0;
     let lon = 0;
@@ -35,8 +35,12 @@ export class SearchService {
       // console.log(form.currLocJson.region);
       lat = form.currLocJson.lat;
       lon = form.currLocJson.lon;
+      city = form.currLocJson.city;
+      state = form.currLocJson.region;
     }
-
+    console.log(city);
+    console.log(state);
+    console.log(currLoc);
     this.weatherdataService.fetchWeatherData(street, city, state, currLoc, lat, lon);
 
     // console.log(city);

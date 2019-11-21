@@ -1,0 +1,36 @@
+#weather-card {
+    background-color: #89d0f2;
+}
+
+.temp {
+    display: inline-flex;
+}
+
+.wcard-degree {
+    height: 10px;
+    margin: 5px;
+}
+
+.wcard-temp {
+    font-size: 30px;
+}
+
+.flex-container-2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.wcard-img-div{
+    margin: 0px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.wcard-img{
+    display: block;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}

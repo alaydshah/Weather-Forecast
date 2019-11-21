@@ -1,0 +1,36 @@
+/* #tweet {
+    width: 38px;
+    height: 38px;
+  } */
+  
+  .btn {
+      height: 40px;
+  }
+  .tweet {
+    padding: 0;
+    background-color: #F7F8FB;
+  }
+
+  .fav-btn {
+      /* box-sizing: border-box; */
+      /* box-shadow:inset 3px 0px 0px 3px #fff; */
+      background-color: #F7F8FB;
+      margin-left: 5px;
+  }
+
+  /* #tweet {
+      height: 10px;
+      width: 10px;
+  } */
+
+  .twittericon {
+      height: 35px;
+      width: 30px;
+  }
+
+  i.star {
+      color: gold;
+  }
+
+
+  

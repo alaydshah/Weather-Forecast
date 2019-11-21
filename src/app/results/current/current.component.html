@@ -1,1 +1,90 @@
-<p>current works!</p>
+<div class="container-fluid col-md-8 col-md-offset-2">
+    <div id="weather-card" class="card container row">
+        <div class="col-12">
+            <div class="container">
+            <div class="row">
+                <h3>{{city}}</h3>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-8 d-flex flex-column align-items-stretch">
+                    <div class="container2 d-flex h-100 flex-column">
+                        <div class="row">
+                            <div class="col">
+                                <h4>{{timeZone}}</h4>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1"></div>
+                        <div class="row">
+                            <div class="col d-flex">
+                                <div class="temp  wcard-temp">{{temperature}}</div>
+                                <img class="temp  wcard-degree" src="https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png">
+                                <div class="temp  wcard-temp">F</div>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1"></div>
+                        <div class="row">
+                            <div class="col">
+                                <p class="card-text">{{weather}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <img class="card-img" [src]="seal" alt="Card image top">
+                </div>
+            </div>
+
+            <!-- <div class="container">
+                <div class = "row d-flex">
+                    <div class="col border">
+                        <div class="row justify-content-center">div</div>
+                        <div class="row justify-content-center">1</div>
+                    </div>
+                    <div class="flex-grow-1"></div>
+                    <div class="col border">div 2</div>
+                    <div class="flex-grow-1"></div>
+                    <div class="col border">div 3</div>        
+                    <div class="flex-grow-1"></div>
+                    <div class="col border">div 4</div>
+                    <div class="flex-grow-1"></div>
+                    <div class="col border">div 5</div>     
+                    <div class="flex-grow-1"></div>
+                    <div class="col border">div 6</div>        
+                </div>
+            </div> -->
+
+            <div id="wcard-details" class="flex-container-2">
+                <div id="wcard-humidity" class="wcard-img-div flex-item-2">
+                    <img class="wcard-humidity wcard-img" title="Humidity" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png">
+                    <p class="wcard-caption">0.86</p>
+                </div>
+
+                <div id="wcard-pressure" class="wcard-img-div flex-item-2">
+                    <img class="wcard-img" title="Pressure" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png">
+                    <p class="wcard-caption">1014.16</p>
+                </div>
+
+                <div id="wcard-windSpeed" class="wcard-img-div flex-item-2">
+                        <img class="wcard-img" title="Wind Speed" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png">
+                        <p class="wcard-caption">4.66</p>
+                </div>
+
+                <div id="wcard-visibility" class="wcard-img-div flex-item-2">
+                        <img class="wcard-img" title="Visibility" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png">
+                        <p class="wcard-caption">5.241</p>
+                </div>
+
+                <div id="wcard-cloudCover" class="wcard-img-div flex-item-2">
+                        <img class="wcard-img" title="Cloud Cover" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png">
+                        <p class="wcard-caption">0.65</p>
+                </div>
+
+                <div id="wcard-ozone" class="wcard-img-div flex-item-2">
+                        <img class="wcard-img" title="Ozone" src="https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png">
+                        <p class="wcard-caption">284.4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

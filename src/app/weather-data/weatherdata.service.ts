@@ -18,6 +18,8 @@ export class WeatherdataService {
   private paramData = [];
   private weatherData;
   private weatherDataUpdated = new Subject<any>();
+  private city;
+  private state;
 
   check() {
     console.log('WeatherdataService check');
@@ -30,6 +32,7 @@ export class WeatherdataService {
   }
 
   fetchWeatherData(inStreet, inCity, inState, inCurrLoc, inLat, inLon) {
+    this.weatherDataUpdated.next();
     console.log('getWeatherData');
     const params = new HttpParams({
       fromObject: {
@@ -41,7 +44,6 @@ export class WeatherdataService {
         lon: inLon
       }
     });
-
     const endPoint = this.serverUrl + 'search';
     this.http.get(endPoint, {params}).subscribe(
       (response) => {
@@ -66,14 +68,27 @@ export class WeatherdataService {
 
   getParameterData(parameter) {
     if (this.weatherData) {
-      this.paramData = [];
-      let i = 0;
-      for (i = 0; i < 24; i++) {
-        this.paramData.push(this.weatherData.hourly.data[i][parameter]);
-      }
-
+      // this.paramData = [];
+      // let i = 0;
+      // for (i = 0; i < 24; i++) {
+      //   this.paramData.push(this.weatherData.hourly.data[i][parameter]);
+      // }
+      return this.weatherData[parameter];
     }
-    return this.paramData;
+    return;
+
   }
+
+  // getParameterData(parameter) {
+  //   if (this.weatherData) {
+  //     this.paramData = [];
+  //     let i = 0;
+  //     for (i = 0; i < 24; i++) {
+  //       this.paramData.push(this.weatherData.hourly.data[i][parameter]);
+  //     }
+
+  //   }
+  //   return this.paramData;
+  // }
 
 }

@@ -1,6 +1,6 @@
-<div>
+<div class="container">
     <select [(ngModel)]="selectedLevel" (change)="generateChart()" class="browser-default custom-select hourly-dropdown col-md-5">
-        <option *ngFor="let parameter of parameterOptions" [ngValue]="parameter.value">{{parameter.name}}</option>
+        <option *ngFor="let parameter of parameterOptions" [ngValue]="parameter">{{parameter.name}}</option>
     </select>
               
     <div style="display: block">

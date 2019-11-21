@@ -1,14 +1,71 @@
 <div class="container" *ngIf="weatherData">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="'current'" routerLinkActive="active" >Current</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="'hourly'" routerLinkActive="active">Hourly</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" [routerLink]="'weekly'" routerLinkActive="active">Weekly</a>
-        </li>
+    <ul class="nav nav-tabs navbar-expand-sm">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'current'" routerLinkActive="active" >Current</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'hourly'" routerLinkActive="active">Hourly</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="'weekly'" routerLinkActive="active">Weekly</a>
+                </li>
+
+                <button class="nav-item btn tweet" (click)="tweet()">
+                        <img class="twittericon" src="../../assets/img/twitter.png" alt="Twitter">
+                </button> 
+                <button class="nav-item btn fav-btn" (click)="tweet()">
+                        <!-- <img id="tweet" class="favorites" src="../../assets/img/star.png" alt="Favorites"> -->
+                        <i class="large material-icons star">star</i>
+                </button>      
     </ul>
+
+        <!-- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <button class="nav-item btn tweet" (click)="tweet()">
+                    <img id="tweet" src="https://csci571.com/hw/hw8/Images/Twitter.png" alt="tweet">
+            </button> 
+            <button class="nav-item btn favorites result-btn" (click)="tweet()">
+                    <img id="tweet" src="../../assets/img/star.png" alt="Favorites">
+            </button> 
+        </div>  -->
+
     <router-outlet></router-outlet>
 </div>
+
+
+<!-- <ul class="nav navbar-expand-sm">
+        <div>
+            <ul class="navbar-nav nav-tabs mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Left</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="//codeply.com">Codeply</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">Navbar 2</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Right</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+            </ul>
+        </div>
+    </ul> -->

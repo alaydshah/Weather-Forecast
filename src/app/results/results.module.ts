@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ResultsRoutingModule,
     ChartsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class ResultsModule { }

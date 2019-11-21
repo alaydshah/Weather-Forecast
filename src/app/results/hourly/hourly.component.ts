@@ -17,7 +17,7 @@ export class HourlyComponent implements OnInit {
                               {name: 'Visibility', value: 'visibility'},
                               {name: 'Wind Speed', value: 'windSpeed'}];
 
-  private selectedLevel = 'temperature';
+  private selectedLevel = this.parameterOptions[0];
 
   public barChartLabels = [];
   public barChartType = 'bar';
@@ -27,7 +27,7 @@ export class HourlyComponent implements OnInit {
     responsive: true
   };
   public barCharData = [
-    {data: [], label: 'Series A'}
+    {data: [], label: this.selectedLevel.name}
   ];
 
   constructor(private weatherdataService: WeatherdataService) { }
@@ -49,11 +49,18 @@ export class HourlyComponent implements OnInit {
 
   generateChart() {
     console.log(this.selectedLevel);
-    console.log(this.weatherdataService.getParameterData(this.selectedLevel));
+    const hourlyData = this.weatherdataService.getParameterData('hourly').data;
+    console.log(hourlyData);
+    const hourlyParamData = [];
+    if (hourlyData) {
+      let i = 0;
+      for (i = 0; i < 24; i++) {
+        hourlyParamData.push(hourlyData[i][this.selectedLevel.value]);
+      }
+    }
 
-    this.barCharData[0].data = this.weatherdataService.getParameterData(this.selectedLevel);
+    this.barCharData[0].data = hourlyParamData;
+    this.barCharData[0].label = this.selectedLevel.name;
   }
-
-  // console.log(this.weatherdataService.)
 
 }
