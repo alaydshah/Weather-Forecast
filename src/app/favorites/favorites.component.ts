@@ -8,7 +8,7 @@ import { WeatherdataService } from '../weather-data/weatherdata.service';
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(private weatherdataService: WeatherdataService) { }
+  constructor() { }
 
   ngOnInit() {
   }

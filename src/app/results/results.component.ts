@@ -25,7 +25,10 @@ export class ResultsComponent implements OnInit {
       this.weatherData = data;
       // console.log(this.weatherData);
     });
-    this.getWeatherData();
+
+    //TODO: Cosider adding this line if problem persists in loading weather data
+    // this.getWeatherData();
+
     // console.log('result ngOnInit');
     // console.log(this.weatherData);
   }
@@ -48,10 +51,6 @@ export class ResultsComponent implements OnInit {
     url += "&url=" + this.details.website;
     var newWin = window.open(url, "tweet", "height=600, width=600");
   }
-
-
-
-
 
   // ngOnDestroy() {
   //   // this.weatherdataSub.unsubscribe();

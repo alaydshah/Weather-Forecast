@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { WeatherData } from './weather-data';
+import { FavoriteService } from '../favorites/favorite.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,11 +17,10 @@ export class WeatherdataService {
   constructor(private http: HttpClient) { }
 
   serverUrl = 'http://localhost:5000/';
-  private paramData = [];
+  // private paramData = [];
   private weatherData;
   private weatherDataUpdated = new Subject<any>();
-  private city;
-  private state;
+  private weatherParam;
 
   check() {
     console.log('WeatherdataService check');
@@ -50,6 +51,13 @@ export class WeatherdataService {
         this.weatherData = response;
         this.weatherDataUpdated.next(this.weatherData);
         console.log(response);
+        this.updateWeatherParams(inCity, inState, this.weatherData.latitude, this.weatherData.latitude);
+        // this.favoriteService.prepFavData(this.weatherParam);
+        // this.weatherParam.city = inCity;
+        // console.log(inState);
+        // this.weatherParam.state = inState;
+        // this.weatherParam.lat = this.weatherData.latitude;
+        // this.weatherParam.lon = this.weatherData.longitude;
       });
   }
 
@@ -76,6 +84,16 @@ export class WeatherdataService {
       return this.weatherData[parameter];
     }
     return;
+
+  }
+
+  updateWeatherParams(inCity, inState, lat, lon) {
+    this.weatherParam = {
+      city: inCity,
+      state: inState,
+      lat: this.weatherData.latitude,
+      longitude: this.weatherData.latitude
+    };
 
   }
 
