@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoritesComponent implements OnInit {
 
+  favLength = localStorage.length;
+  favorites = localStorage;
+
   constructor() { }
 
   ngOnInit() {

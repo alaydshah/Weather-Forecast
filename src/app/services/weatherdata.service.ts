@@ -54,8 +54,13 @@ export class WeatherdataService {
   }
 
   getWeatherData() {
-    console.log('WeatherData Services getWeatherData called');
-    console.log(this.weatherData);
+    // console.log('WeatherData Services getWeatherData called');
+    // console.log(this.weatherData);
+    // this.weatherDataUpdated.next(this.weatherData);
+    return this.weatherData;
+  }
+
+  loadWeatherData() {
     this.weatherDataUpdated.next(this.weatherData);
   }
 

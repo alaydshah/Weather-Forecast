@@ -12,8 +12,8 @@ export class FavoriteService {
   constructor(private weatherdataService: WeatherdataService) { }
 
   private curFav: WeatherData;
-  private curKey: string;
-  private isFavoriteUpdate = new Subject<boolean>();
+  public curKey: string;
+  private isFavoriteUpdated = new Subject<boolean>();
   private isFavorite;
 
   prepFavData() {
@@ -39,11 +39,11 @@ export class FavoriteService {
     }
     console.log(this.isFavorite);
     console.log('Printing key: ' + this.curKey);
-    this.isFavoriteUpdate.next(this.isFavorite);
+    this.isFavoriteUpdated.next(this.isFavorite);
   }
 
   getFavoriteListener() {
-    return this.isFavoriteUpdate.asObservable();
+    return this.isFavoriteUpdated.asObservable();
   }
 
   generateKey(city: string, state: string) {
@@ -55,14 +55,16 @@ export class FavoriteService {
     if (this.curKey) {
       localStorage.setItem(this.curKey, JSON.stringify(this.curFav));
       this.isFavorite = true;
-      this.isFavoriteUpdate.next(this.isFavorite);
+      this.isFavoriteUpdated.next(this.isFavorite);
     }
   }
 
-  removeFavorite() {
-    localStorage.removeItem(this.curKey);
-    this.isFavorite = false;
-    this.isFavoriteUpdate.next(this.isFavorite);
+  removeFavorite(key) {
+    if (key === this.curKey) {
+      this.isFavorite = false;
+      this.isFavoriteUpdated.next(this.isFavorite);
+    }
+    localStorage.removeItem(key);
   }
 
   getFavorite(key: string): string {

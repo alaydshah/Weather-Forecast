@@ -36,7 +36,7 @@ export class ResultsComponent implements OnInit {
 
     });
     // TODO: Cosider adding this line if problem persists in loading weather data
-    // this.getWeatherData();
+    this.weatherdataService.loadWeatherData();
 
     // console.log('result ngOnInit');
     // console.log(this.weatherData);
@@ -47,7 +47,7 @@ export class ResultsComponent implements OnInit {
 
   onFavClick() {
     if (this.isFavourite) {
-      this.favoritesService.removeFavorite();
+      this.favoritesService.removeFavorite(this.favoritesService.curKey);
     } else {
       this.isFavourite = true;
       this.favoritesService.setFavorite();
