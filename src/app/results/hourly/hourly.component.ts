@@ -25,14 +25,14 @@ export class HourlyComponent implements OnInit {
   public barChartLegend = true;
   public barChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+
   };
   public barCharData = [
-    {data: [], label: this.selectedLevel.name}
+    {data: [], label: this.selectedLevel.name, backgroundColor: 'rgb(165, 209, 238)'}
   ];
 
   constructor(private weatherdataService: WeatherdataService) { }
-
 
   ngOnInit() {
     this.initializeLabels();
