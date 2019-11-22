@@ -8,6 +8,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { appRoutingModule } from './app.routing';
 import { ChartsModule } from 'ng2-charts';
+import { ModalModule } from 'ngx-bootstrap';
+import { ModalComponent } from './modal/modal.component';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 // import { CurrentComponent } from './results/current/current.component';
 // import { HourlyComponent } from './results/hourly/hourly.component';
@@ -20,7 +24,8 @@ import { ChartsModule } from 'ng2-charts';
     AppComponent,
     SearchFormComponent,
     // ResultsComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    ModalComponent
     // CurrentComponent,
     // HourlyComponent,
     // WeeklyComponent

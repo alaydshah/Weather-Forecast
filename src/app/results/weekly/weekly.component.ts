@@ -3,6 +3,9 @@ import * as CanvasJS from '../canvasjs.min.js';
 import { WeatherdataService } from 'src/app/services/weatherdata.service';
 import { Subscription, Observable, Subject } from 'rxjs';
 
+// import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+// import { BsModalService } from 'ngx-bootstrap/modal';
+
 @Component({
   selector: 'app-weekly',
   templateUrl: './weekly.component.html',
@@ -76,8 +79,6 @@ export class WeeklyComponent implements OnInit {
     });
     chart.render();
     }
-
-// '%C2%B0'
 
     populateData() {
       const weeklyData = this.weatherdataService.getParameterData('daily').data;

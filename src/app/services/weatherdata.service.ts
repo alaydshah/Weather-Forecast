@@ -57,7 +57,11 @@ export class WeatherdataService {
         console.log(response);
         this.updateWeatherParams(inCity, inState, this.weatherData.latitude, this.weatherData.latitude);
         this.weatherDataUpdated.next(this.weatherData);
-      });
+      },
+      (error) => {this.weatherData = 0;
+                  this.weatherDataUpdated.next(this.weatherData);
+                  console.log(this.weatherData);
+    });
   }
 
   getWeatherData() {

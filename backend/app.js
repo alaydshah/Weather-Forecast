@@ -17,32 +17,14 @@ app.use((req, res, next) => {
         'Access-Control-Allow-Methods', 
         'GET, POST, PATCH, DELETE, OPTIONS'
     );
-
-    // // TODO: remove this line
-    // res.send('Hello from exprss');
-
     next();
 });
 
-// app.get((req, res, next) => {
-
-//     res.send('Server up and running!');
-
-//     // next();
-// });
 
 app.get("/", function (req, res) {
     res.send("Server up and running!");
 });
 
-app.post('/api/posts', (req, res, next) => {
-    const post = req.body;
-    console.log('Hi There');
-    console.log(post);
-    res.status(201).json({
-        message: "Post addedd successfully"
-    });
-});
 
 app.get('/search', async (req, res, next) => {
 
@@ -57,14 +39,11 @@ app.get('/search', async (req, res, next) => {
         let state = req.query.state;
         endPoint = `https://maps.googleapis.com/maps/api/geocode/xml?address=[${street},${city},${state}]&key=AIzaSyD4EIhwoiS105sjCDyxTZnmQgwkpLeyLdg`;
         const response = await api_helper.make_API_call(endPoint);
-            // .then(
-            //     response => {
-            //         console.log(json(response))
-            //     })
-            // .catch(error => {
-            //     res.send(error)
-            // })
-        // console.log(JSON.parse(xmlParser.toJson(response)).GeocodeResponse.result.geometry.location);
+        if(response.statusCode != 200){
+            res.send('Invalid Address');
+        }
+        // console.log(response.status);
+        
         let location = JSON.parse(xmlParser.toJson(response)).GeocodeResponse.result.geometry.location;
 
         lat = location.lat;

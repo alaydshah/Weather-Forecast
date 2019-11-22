@@ -16,13 +16,17 @@ export class ResultsComponent implements OnInit {
               private favoritesService: FavoriteService) {
 
    }
-
+   private progress = true;
    private weatherData;
    private weatherdataSub: Subscription;
    private isFavourite;
    private favSubscription: Subscription;
 
   ngOnInit() {
+    setTimeout(function() {
+      this.progress = false;
+  }.bind(this), 3000);
+
     this.weatherdataSub = this.weatherdataService.getWeatherdataListener().subscribe((data) => {
       this.weatherData = data;
       console.log(this.weatherData);
@@ -58,7 +62,7 @@ export class ResultsComponent implements OnInit {
     // console.log(city);
     // console.log(temp);
     // console.log(summary);
-    let url = "https://twitter.com/intent/tweet?text=";
+    let url = 'https://twitter.com/intent/tweet?text=';
     url += `The current temperature at ${city} is ${temp}%C2%B0 F. The weather conditions are ${summary}.
     %23CSCI571WeatherSearch`;
     window.open(url, '_blank');

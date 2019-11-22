@@ -1,4 +1,9 @@
+
 <div class="container" *ngIf="weatherData">
+    <div *ngIf="progress" class="progress">
+            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <div *ngIf="!progress">
     <ul class="nav nav-tabs navbar-expand-sm">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="'current'" routerLinkActive="active" >Current</a>
@@ -11,7 +16,7 @@
                 </li>
 
                 <button class="nav-item btn tweet" (click)="tweet()">
-                        <img class="twittericon" src="../../assets/img/twitter.png" alt="Twitter">
+                        <img class="twittericon" src="https://csci571.com/hw/hw8/Images/Twitter.png" alt="Twitter">
                 </button> 
                 <button class="nav-item btn fav-btn" (click)="onFavClick()">
                         <!-- <img id="tweet" class="favorites" src="../../assets/img/star.png" alt="Favorites"> -->
@@ -21,18 +26,26 @@
                         </ng-template>
                 </button>      
     </ul>
-
-        <!-- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <button class="nav-item btn tweet" (click)="tweet()">
-                    <img id="tweet" src="https://csci571.com/hw/hw8/Images/Twitter.png" alt="tweet">
-            </button> 
-            <button class="nav-item btn favorites result-btn" (click)="tweet()">
-                    <img id="tweet" src="../../assets/img/star.png" alt="Favorites">
-            </button> 
-        </div>  -->
-
     <router-outlet></router-outlet>
+    </div>
 </div>
+
+<div class="alert alert-warning" role="alert" *ngIf="weatherData == 0">
+        Invalid Address
+</div>
+
+
+
+
+<!-- <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+    <button class="nav-item btn tweet" (click)="tweet()">
+            <img id="tweet" src="https://csci571.com/hw/hw8/Images/Twitter.png" alt="tweet">
+    </button> 
+    <button class="nav-item btn favorites result-btn" (click)="tweet()">
+            <img id="tweet" src="../../assets/img/star.png" alt="Favorites">
+    </button> 
+</div>  -->
+
 
 
 <!-- <ul class="nav navbar-expand-sm">
