@@ -19,6 +19,8 @@ export class WeatherdataService {
   private weatherData;
   private weatherDataUpdated = new Subject<any>();
   private weatherParam: WeatherData;
+  private modalData;
+  private modalDataUpdated = new Subject<any>();
 
   check() {
     console.log('WeatherdataService check');
@@ -28,6 +30,10 @@ export class WeatherdataService {
     console.log('getWeatherdataListener');
     console.log(this.weatherData);
     return this.weatherDataUpdated.asObservable();
+  }
+
+  getModaldataListener() {
+    return this.modalDataUpdated.asObservable();
   }
 
   fetchWeatherData(inStreet, inCity, inState, inCurrLoc, inLat, inLon) {
@@ -43,6 +49,7 @@ export class WeatherdataService {
         lon: inLon
       }
     });
+
     const endPoint = this.serverUrl + 'search';
     this.http.get(endPoint, {params}).subscribe(
       (response) => {
@@ -71,6 +78,8 @@ export class WeatherdataService {
   }
 
   getParameterData(parameter) {
+    console.log(parameter);
+    console.log(this.weatherData);
     if (this.weatherData) {
       return this.weatherData[parameter];
     }
@@ -84,6 +93,28 @@ export class WeatherdataService {
       lat: this.weatherData.latitude,
       lon: this.weatherData.longitude
     };
+  }
+
+  fetchModalData(index) {
+    console.log(index);
+    const lat = this.weatherParam.lat;
+    const lon = this.weatherParam.lon;
+    const tstamp = this.getParameterData('daily').data[index].time;
+    const params = new HttpParams({
+      fromObject: {
+        latitude: lat,
+        longitude: lon,
+        timestamp: tstamp
+      }
+    });
+    const endPoint = this.serverUrl + 'modal';
+    console.log(endPoint);
+    this.http.get(endPoint, {params})
+      .subscribe((response) => {
+        this.modalData = response;
+        this.modalDataUpdated.next(this.modalData);
+        console.log(response);
+      });
   }
 
   getWeatherParams() {

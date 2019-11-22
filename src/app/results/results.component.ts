@@ -32,11 +32,9 @@ export class ResultsComponent implements OnInit {
     this.favSubscription = this.favoritesService.getFavoriteListener()
     .subscribe((data) => {
       this.isFavourite = data;
-
     });
     // TODO: Cosider adding this line if problem persists in loading weather data
     this.weatherdataService.loadWeatherData();
-
     // console.log('result ngOnInit');
     // console.log(this.weatherData);
   }
@@ -53,15 +51,18 @@ export class ResultsComponent implements OnInit {
     }
   }
 
-  // tweet() {
-  //   let url = "https://twitter.com/intent/tweet?text=";
-  //   url += `Check out ${this.details.name} at ${
-  //     this.details.formatted_address
-  //   }. Website: `;
-  //   url += "&hashtags=TravelAndEntertainmentSearch";
-  //   url += "&url=" + this.details.website;
-  //   var newWin = window.open(url, "tweet", "height=600, width=600");
-  // }
+  tweet() {
+    const city = this.weatherdataService.getWeatherParams().city;
+    const temp = this.weatherData.currently.temperature;
+    const summary = this.weatherData.currently.summary;
+    // console.log(city);
+    // console.log(temp);
+    // console.log(summary);
+    let url = "https://twitter.com/intent/tweet?text=";
+    url += `The current temperature at ${city} is ${temp}%C2%B0 F. The weather conditions are ${summary}.
+    %23CSCI571WeatherSearch`;
+    window.open(url, '_blank');
+  }
 
   // ngOnDestroy() {
   //   this.weatherdataSub.unsubscribe();

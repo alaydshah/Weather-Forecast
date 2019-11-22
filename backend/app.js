@@ -79,6 +79,21 @@ app.get('/search', async (req, res, next) => {
     res.send(responseData);
 });
 
+app.get('/modal', async (req, res) => {
+
+    let endPoint = '';
+    console.log(req.query.latitude);
+    console.log(req.query.longitude);
+    console.log(req.query.timestamp);
+    const lat = req.query.latitude;
+    const lon = req.query.longitude;
+    const tstamp = req.query.timestamp;
+    endPoint = `https://api.darksky.net/forecast/67e818525b909c766c749bc9ef5bc9f0/${lat},${lon},${tstamp}`;
+    const responseData = await api_helper.make_API_call(endPoint);
+    console.log(responseData);
+    res.send(responseData);
+});
+
 //Export
 module.exports = app;
 

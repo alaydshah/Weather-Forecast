@@ -1,90 +1,116 @@
 import { Component, OnInit } from '@angular/core';
 import * as CanvasJS from '../canvasjs.min.js';
-import { WeatherdataService } from 'src/app/services/weatherdata.service.js';
+import { WeatherdataService } from 'src/app/services/weatherdata.service';
+import { Subscription, Observable, Subject } from 'rxjs';
+
 @Component({
   selector: 'app-weekly',
   templateUrl: './weekly.component.html',
   styleUrls: ['./weekly.component.css']
 })
 export class WeeklyComponent implements OnInit {
+  private weeklyDataPoints: any[] = [];
+  private lat;
+  private lon;
+  private timestampArr = [];
 
   constructor(private weatherdataService: WeatherdataService) { }
 
-  public barChartLabels = [];
-  public barChartType = 'horizontalBar';
-  public barChartLegend = true;
-  public barChartOptions = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barCharData = [
-    {data: [], label: 'Day wise temperature range'}
-  ];
+  // public barChartLabels = [];
+  // public barChartType = 'horizontalBar';
+  // public barChartLegend = true;
+  // public barChartOptions = {
+  //   scaleShowVerticalLines: false,
+  //   responsive: true
+  // };
+  // public barCharData = [
+  //   {data: [], label: 'Day wise temperature range'}
+  // ];
 
   ngOnInit() {
+    this.populateData();
     this.generateChart();
   }
 
   generateChart() {
+    console.log(this.weeklyDataPoints);
     const chart = new CanvasJS.Chart('chartContainer', {
       animationEnabled: true,
-      exportEnabled: true,
       title: {
-        text: 'Employees Salary in a Company'
+        text: 'Weekly Weather'
       },
       axisX: {
-        title: 'Departments'
+        title: 'Days'
       },
       axisY: {
         includeZero: false,
-        title: 'Salary in USD',
+        title: 'Temperature in Fahrenheit',
+        gridThickness: 0,
         interval: 10,
-        suffix: 'k',
-        prefix: '$'
       },
+      dataPointWidth: 16,
       data: [{
+        click: async (e) => {
+          console.log(e.dataPointIndex);
+          let modalData;
+          this.weatherdataService.getModaldataListener().subscribe((data) => {
+            modalData = data;
+            console.log(modalData);
+            this.generateCard(modalData);
+
+          });
+          this.weatherdataService.fetchModalData(e.dataPointIndex);
+        },
+        color: 'rgb(165, 209, 238)',
         type: 'rangeBar',
         showInLegend: true,
-        yValueFormatString: '$#0.#K',
+        yValueFormatString: '#0',
         indexLabel: '{y[#index]}',
-        legendText: 'Department wise Min and Max Salary',
+        legendText: 'Day wise temperature range',
         toolTipContent: '<b>{label}</b>: {y[0]} to {y[1]}',
-        dataPoints: [
-          { x: 10, y: [80, 115], label: 'Data Scientist' },
-          { x: 20, y: [95, 141], label: 'Product Manager' },
-          { x: 30, y: [98, 115], label: 'Web Developer' },
-          { x: 40, y: [90, 160], label: 'Software Engineer' },
-          { x: 50, y: [100, 152], label: 'Quality Assurance' }
-        ]
-      }]
+        dataPoints: this.weeklyDataPoints
+      }],
+      legend: {
+        verticalAlign: 'top'
+      },
     });
     chart.render();
     }
 
+// '%C2%B0'
+
+    populateData() {
+      const weeklyData = this.weatherdataService.getParameterData('daily').data;
+      const data = this.weatherdataService.getWeatherData();
+      this.lat = data.latitude;
+      this.lon = data.longitude;
+      const offset = data.offset;
+      console.log(offset);
+      if (weeklyData) {
+        let i;
+        console.log(weeklyData.length);
+
+        for (i = 0; i < 8; i++) {
+          const unixTstamp = weeklyData[i].time;
+          this.timestampArr.push(unixTstamp);
+          console.log(unixTstamp);
+          const time = new Date(unixTstamp * 1000 + offset * 3600000);
+          const year = time.getUTCFullYear();
+          const month = time.getUTCMonth() + 1;
+          const day = time.getUTCDate();
+          const date = year + '-' + month + '-' + day;
+          const item = {
+            x: i,
+            y: [weeklyData[i].temperatureLow, weeklyData[i].temperatureHigh],
+            label: date,
+          };
+          // console.log(item);
+          this.weeklyDataPoints.push(item);
+        }
+      }
+    }
+
+    generateCard(data) {
+      console.log(data);
+    }
   }
-
-// const weeklyData = this.weatherdataService.getParameterData('daily').data;
-
-// if (weeklyData) {
-//   let i;
-
-//   for (i = 0; i < weeklyData.length; i++) {
-//     const temp = [];
-//     temp.push(weeklyData[i].temperatureLow);
-//     temp.push(weeklyData[i].temperatureHigh);
-//     this.barCharData[0].data.push(temp);
-//     this.barChartLabels.push(i);
-//   }
-// }
-// console.log(this.barCharData[0].data);
-
-// }
-
-  // var unix_tstamp = daily_data[key];
-  //                                   var offset = json_data.offset;
-  //                                   var time = new Date(unix_tstamp*1000 + offset * 3600000);
-  //                                   var year = time.getUTCFullYear();
-  //                                   var month = time.getUTCMonth() + 1;
-  //                                   var day = time.getUTCDate();
-
-  //                                   var date = year + '-' + month + '-' + day;
