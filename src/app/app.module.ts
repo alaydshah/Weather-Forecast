@@ -9,7 +9,6 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { appRoutingModule } from './app.routing';
 import { ChartsModule } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap';
-import { ModalComponent } from './modal/modal.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
@@ -25,7 +24,6 @@ import { ModalComponent } from './modal/modal.component';
     SearchFormComponent,
     // ResultsComponent,
     FavoritesComponent,
-    ModalComponent
     // CurrentComponent,
     // HourlyComponent,
     // WeeklyComponent

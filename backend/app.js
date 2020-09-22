@@ -2,9 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const api_helper = require('./API_helper');
 const app = express();
-var async  = require('express-async-await');
-var fetch = require('node-fetch');
-let xmlParser = require('xml2json');
+// var async  = require('express-async-await');
+// var fetch = require('node-fetch');
 
 
 app.use(bodyParser.json());
@@ -37,14 +36,15 @@ app.get('/search', async (req, res, next) => {
         let street = req.query.street;
         let city = req.query.city;
         let state = req.query.state;
-        endPoint = `https://maps.googleapis.com/maps/api/geocode/xml?address=[${street},${city},${state}]&key=AIzaSyD4EIhwoiS105sjCDyxTZnmQgwkpLeyLdg`;
+        endPoint = `https://maps.googleapis.com/maps/api/geocode/json?address=[${street},${city},${state}]&key=AIzaSyD4EIhwoiS105sjCDyxTZnmQgwkpLeyLdg`;
         const response = await api_helper.make_API_call(endPoint);
-        if(response.statusCode != 200){
+        console.log(response.status);
+        if(response.status === 'ZERO_RESULTS'){
             res.send('Invalid Address');
         }
-        // console.log(response.status);
-        
-        let location = JSON.parse(xmlParser.toJson(response)).GeocodeResponse.result.geometry.location;
+        console.log(response.results[0]);
+        // let location = JSON.parse(response).GeocodeResponse.result.geometry.location;
+        let location = response.results[0].geometry.location
 
         lat = location.lat;
         lng = location.lng;
