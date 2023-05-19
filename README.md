@@ -1,4 +1,9 @@
+# MARCH 2023 UPDATE:
+This weather forecast app relied on Dark Sky Weather APIs to provide real-time weather forecasts. However, since the Dark Sky API was discontinued on March 31 and its features were integrated into Apple Weather, this web app is no longer functional in its current form.
+
 # ForecastApp
+
+Live: https://bit.ly/liveWeather
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
 
